@@ -1,0 +1,18 @@
+RotateLeft(N):
+    if !N or !N.right: return N
+    R = N.right
+    N.right = R.left
+    R.left = N
+    UpdateHeight(N), UpdateHeight(R)
+    return R
+
+RotateRight(N):
+    if !N or !N.left: return N
+    L = N.left
+    N.left = L.right
+    L.right = N
+    UpdateHeight(N), UpdateHeight(L)
+    return L
+
+UpdateHeight(N):
+    if N: N.height = 1 + max(height(N.left), height(N.right))
